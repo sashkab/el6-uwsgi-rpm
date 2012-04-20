@@ -22,7 +22,7 @@ prog=$(basename "$uwsgi")
 UWSGI_CONF_DIR="/etc/uwsgi"
 UWSGI_LOG_DIR="/var/log/uwsgi"
 PIDFILE_DIR="/var/run/uwsgi"
-UWSGI_ARGS="--master --die-on-term"
+UWSGI_ARGS="--master --die-on-term --gid=uwsgi --uid=uwsgi"
 
 if [ -f /etc/sysconfig/uwsgi ]; then
     . /etc/sysconfig/uwsgi
