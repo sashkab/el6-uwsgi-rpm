@@ -1,11 +1,11 @@
---- a/uwsgiconfig.py	2012-03-28 13:09:11.000000000 -0400
-+++ b/uwsgiconfig.py	2012-04-19 13:54:10.772428166 -0400
-@@ -853,7 +853,7 @@
+--- a/uwsgiconfig.py    2014-06-01 10:06:26.000000000 +0400
++++ b/uwsgiconfig.py    2014-06-03 18:34:45.346107863 +0400
+@@ -1357,7 +1357,7 @@
      except:
          pass
- 
--    plugin_dest = uc.get('plugin_dir') + '/' + name + '_plugin'
-+    plugin_dest = name + '_plugin'
- 
-     shared_flag = '-shared'
- 
+
+-    if uc:
++    if False:
+         plugin_dest = uc.get('plugin_dir') + '/' + name + '_plugin'
+     else:
+         plugin_dest = name + '_plugin'
