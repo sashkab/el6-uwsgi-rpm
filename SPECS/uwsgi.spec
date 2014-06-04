@@ -10,7 +10,7 @@ Source1:        rhel6.ini
 Source2:        uwsgi.init
 Patch0:         uwsgi_trick_chroot_rpmbuild.patch
 Patch1:         uwsgi_fix_rpath.patch
-BuildRequires:  python2-devel, libxml2-devel, libuuid-devel
+BuildRequires:  python2-devel, libxml2-devel, libuuid-devel, ruby, ruby-devel
 BuildRequires:  libyaml-devel, perl-devel, pcre-devel, perl-ExtUtils-Embed
 
 %description
