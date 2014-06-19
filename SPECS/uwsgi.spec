@@ -1,6 +1,6 @@
 Name:           uwsgi
 Version:        2.0.5.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Fast, self-healing, application container server
 Group:          System Environment/Daemons
 License:        GPLv2
@@ -35,6 +35,16 @@ Requires: %{name}
 %description -n %{name}-devel
 This package contains the development header files and libraries
 for uWSGI extensions
+
+
+%package -n %{name}-plugin-cgi
+Summary:  uWSGI - CGI plugin for uWSGI
+Group:    System Environment/Daemons
+Requires: %{name}
+
+%description -n %{name}-plugin-cgi
+This package contains the CGI plugin used with uWSGI.
+
 
 %package -n %{name}-plugin-python
 Summary:  uWSGI - Plugin for Python support
@@ -115,6 +125,10 @@ fi
 %files -n %{name}-devel
 %{_includedir}/%{name}
 
+%files -n %{name}-plugin-cgi
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/cgi_plugin.so
+
 %files -n %{name}-plugin-python
 %{_libdir}/%{name}/python_plugin.so
 
@@ -125,6 +139,9 @@ fi
 %{_libdir}/%{name}/psgi_plugin.so
 
 %changelog
+* Thu Jun 19 2014 Aleks Bunin <sbunin@gmail.com> - 2.0.5.1-2
+- Restored cgi plugin
+
 * Tue Jun 03 2014 Sergey Morozov <sergey.morozov@corp.mail.ru> - 2.0.5.1-1
 - Build now inherits "base" buildconf with only python, rack and psgi plugins
 - Removed wiki doc
