@@ -140,6 +140,7 @@ fi
 
 %changelog
 * Sat Sep 06 2014 Alan Chalmers <alan.chalmers@gmail.com> - 2.0.7
+- Upgraded to latest stable upstream version
 
 * Thu Jun 19 2014 Aleks Bunin <sbunin@gmail.com> - 2.0.5.1-2
 - Restored cgi plugin
