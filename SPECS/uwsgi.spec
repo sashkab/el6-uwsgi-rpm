@@ -1,6 +1,6 @@
 Name:           uwsgi
-Version:        2.0.5.1
-Release:        2%{?dist}
+Version:        2.0.7
+Release:        1%{?dist}
 Summary:        Fast, self-healing, application container server
 Group:          System Environment/Daemons
 License:        GPLv2
@@ -139,6 +139,8 @@ fi
 %{_libdir}/%{name}/psgi_plugin.so
 
 %changelog
+* Sat Sep 06 2014 Alan Chalmers <alan.chalmers@gmail.com> - 2.0.7
+
 * Thu Jun 19 2014 Aleks Bunin <sbunin@gmail.com> - 2.0.5.1-2
 - Restored cgi plugin
 
