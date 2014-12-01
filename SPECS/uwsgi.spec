@@ -1,5 +1,5 @@
 Name:           uwsgi
-Version:        2.0.7
+Version:        2.0.8
 Release:        1%{?dist}
 Summary:        Fast, self-healing, application container server
 Group:          System Environment/Daemons
@@ -139,6 +139,9 @@ fi
 %{_libdir}/%{name}/psgi_plugin.so
 
 %changelog
+* Tue Dec 02 2014 Mark Carbonaro <mark@carbonaro.org> - 2.0.8
+- Updated to latest upstream stable version
+
 * Sat Sep 06 2014 Alan Chalmers <alan.chalmers@gmail.com> - 2.0.7
 - Upgraded to latest stable upstream version
 
