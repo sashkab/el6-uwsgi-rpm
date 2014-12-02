@@ -17,7 +17,7 @@ https://github.com/edestler/el6-uwsgi-rpm
 
     yum install -y rpm-build rpmdevtools readline-devel ncurses-devel gdbm-devel tcl-devel openssl-devel db4-devel byacc libuuid-devel ruby ruby-devel perl-ExtUtils-Embed libyaml-devel libffi-devel make python2-devel libxml2-devel pcre-devel gcc
     git clone https://github.com/sashkab/el6-uwsgi-rpm.git $HOME/rpmbuild
-    wget http://projects.unbit.it/downloads/uwsgi-2.0.7.tar.gz -O $HOME/rpmbuild/SOURCES/uwsgi-2.0.7.tar.gz
+    wget http://projects.unbit.it/downloads/uwsgi-2.0.8.tar.gz -O $HOME/rpmbuild/SOURCES/uwsgi-2.0.8.tar.gz
     cd $HOME/rpmbuild/SPECS && rpmbuild -bb uwsgi.spec
 
 When compilations completes, rpms will be in `$HOME/rpmbuild/RPMS`.

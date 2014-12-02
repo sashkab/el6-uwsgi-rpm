@@ -1,5 +1,5 @@
 Name:           uwsgi
-Version:        2.0.7
+Version:        2.0.8
 Release:        1%{?dist}
 Summary:        Fast, self-healing, application container server
 Group:          System Environment/Daemons
@@ -67,8 +67,24 @@ Summary:  uWSGI - Plugin for Perl PSGI support
 Group:    System Environment/Daemons
 Requires: perl, %{name}
 
+%package -n %{name}-plugin-http
+Summary:  uWSGI - Plugin for HTTP support
+Group:    System Environment/Daemons
+Requires: %{name}
+
+%package -n %{name}-plugin-corerouter
+Summary:  uWSGI - Plugin for corerouter
+Group:    System Environment/Daemons
+Requires: %{name}
+
 %description -n %{name}-plugin-psgi
 This package contains the Perl PSGI plugin for uWSGI
+
+%description -n %{name}-plugin-http
+This package contains the HTTP plugin for uWSGI
+
+%description -n %{name}-plugin-corerouter
+This package contains the corerouter plugin for uWSGI
 
 %prep
 %setup -q
@@ -138,7 +154,17 @@ fi
 %files -n %{name}-plugin-psgi
 %{_libdir}/%{name}/psgi_plugin.so
 
+%files -n %{name}-plugin-http
+%{_libdir}/%{name}/http_plugin.so
+
+%files -n %{name}-plugin-corerouter
+%{_libdir}/%{name}/corerouter_plugin.so
+
 %changelog
+* Tue Dec 02 2014 Mark Carbonaro <mark@carbonaro.org> - 2.0.8
+- Updated to latest upstream stable version
+- Added http and corerouter plugins
+
 * Sat Sep 06 2014 Alan Chalmers <alan.chalmers@gmail.com> - 2.0.7
 - Upgraded to latest stable upstream version
 
