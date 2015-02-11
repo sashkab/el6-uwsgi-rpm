@@ -1,0 +1,39 @@
+--- uwsgi-2.0.8/plugins/psgi/psgi_plugin.c  2014-10-26 04:30:44.000000000 +0000
++++ uwsgi-2.0.8_new/plugins/psgi/psgi_plugin.c  2015-02-11 11:44:15.600984604 +0000
+@@ -637,6 +637,18 @@
+    // before the environ is set up.
+    if (!wsgi_req->async_environ) return;
+
++    // we need to restore the context in case of multiple interpreters
++    struct uwsgi_app *wi = &uwsgi_apps[wsgi_req->app_id];
++    if (uwsgi.threads < 2) {
++        if (((PerlInterpreter **)wi->interpreter)[0] != uperl.main[0]) {
++            PERL_SET_CONTEXT(((PerlInterpreter **)wi->interpreter)[0]);
++        }
++    }else {
++        if (((PerlInterpreter **)wi->interpreter)[wsgi_req->async_id] != uperl.main[wsgi_req->async_id]) {
++            PERL_SET_CONTEXT(((PerlInterpreter **)wi->interpreter)[wsgi_req->async_id]);
++        }
++    }
++
+    // dereference %env
+    SV *env = SvRV((SV *) wsgi_req->async_environ);
+
+@@ -678,6 +690,17 @@
+                 }
+         }
+
++    // restore main interpreter if needed
++    if (uwsgi.threads > 1) {
++        if (((PerlInterpreter **)wi->interpreter)[wsgi_req->async_id] != uperl.main[wsgi_req->async_id]) {
++            PERL_SET_CONTEXT(uperl.main[wsgi_req->async_id]);
++        }
++    }else {
++        if (((PerlInterpreter **)wi->interpreter)[0] != uperl.main[0]) {
++            PERL_SET_CONTEXT(uperl.main[0]);
++        }
++    }
++
+ }
+
+ int uwsgi_perl_magic(char *mountpoint, char *lazy) {
