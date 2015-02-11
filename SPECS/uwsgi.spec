@@ -1,6 +1,6 @@
 Name:           uwsgi
 Version:        2.0.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Fast, self-healing, application container server
 Group:          System Environment/Daemons
 License:        GPLv2
@@ -10,6 +10,7 @@ Source1:        rhel6.ini
 Source2:        uwsgi.init
 Patch0:         uwsgi_trick_chroot_rpmbuild.patch
 Patch1:         uwsgi_fix_rpath.patch
+Patch2:         uwsgi_multi_app_env.patch
 BuildRequires:  python2-devel, libxml2-devel, libuuid-devel, ruby, ruby-devel
 BuildRequires:  libyaml-devel, perl-devel, pcre-devel, perl-ExtUtils-Embed
 
@@ -92,6 +93,7 @@ cp -p %{SOURCE1} buildconf/
 echo "plugin_dir = %{_libdir}/%{name}" >> buildconf/$(basename %{SOURCE1})
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 CFLAGS="%{optflags}" python uwsgiconfig.py --build rhel6
@@ -161,6 +163,9 @@ fi
 %{_libdir}/%{name}/corerouter_plugin.so
 
 %changelog
+* Wed Feb 11 2015 Rohit Deshmukh <raigad1630@gmail.com> - 2.0.8-2
+- added patch multi_app_env.patch to remove env error messages on multi app setup
+
 * Tue Dec 02 2014 Mark Carbonaro <mark@carbonaro.org> - 2.0.8
 - Updated to latest upstream stable version
 - Added http and corerouter plugins
