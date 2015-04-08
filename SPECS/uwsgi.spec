@@ -1,5 +1,5 @@
 Name:           uwsgi
-Version:        2.0.8
+Version:        2.0.10
 Release:        1%{?dist}
 Summary:        Fast, self-healing, application container server
 Group:          System Environment/Daemons
@@ -161,6 +161,9 @@ fi
 %{_libdir}/%{name}/corerouter_plugin.so
 
 %changelog
+* Thu Mar 26 2015 Michal Kubenka <mkubenka@gmail.com> - 2.0.10
+- Updated to latest upstream stable version
+
 * Tue Dec 02 2014 Mark Carbonaro <mark@carbonaro.org> - 2.0.8
 - Updated to latest upstream stable version
 - Added http and corerouter plugins
