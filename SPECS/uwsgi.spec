@@ -1,6 +1,6 @@
 Name:           uwsgi
 Version:        2.0.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Fast, self-healing, application container server
 Group:          System Environment/Daemons
 License:        GPLv2
@@ -161,7 +161,10 @@ fi
 %{_libdir}/%{name}/corerouter_plugin.so
 
 %changelog
-* Thu Mar 26 2015 Michal Kubenka <mkubenka@gmail.com> - 2.0.10
+* Thu Apr 8 2015 Michal Kubenka <mkubenka@gmail.com> - 2.0.10-2
+- Ensure that the pidfile path exists.
+
+* Thu Mar 26 2015 Michal Kubenka <mkubenka@gmail.com> - 2.0.10-1
 - Updated to latest upstream stable version
 
 * Tue Dec 02 2014 Mark Carbonaro <mark@carbonaro.org> - 2.0.8

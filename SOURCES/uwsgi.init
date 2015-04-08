@@ -119,6 +119,14 @@ start() {
     pidfile=$(pidfile_for "$config_file")
     args="$(args_for "$config_file")"
 
+    # Ensure that the pidfile path exists.
+    pidfilepath=`dirname ${pidfile}`
+    if [ ! -d "${pidfilepath}" ]; then
+        mkdir -p "${pidfilepath}"
+        chmod 755 "${pidfilepath}"
+        chown uwsgi:uwsgi "${pidfilepath}"
+    fi
+
     echo -n "Starting uWSGI for ${instance}... "
     daemon --pidfile="$pidfile" $uwsgi $args
     retval=$?
